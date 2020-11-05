@@ -71,9 +71,8 @@ const App = () => {
   const changePaintColor = async (color) => {
     if (!isReady || !mainBody || !underBody || !gasFlap) return;
     if (process.env.REACT_ENV !== 'dev') {
-      window.gtag('event', 'Selection', {
-        'action': 'Color Selection',
-        'value': color.name
+      window.gtag('event', 'selection', {
+        'Color Selection': color.name,
       });
     }
     vctrApi.updateMaterial(mainBody.material, {color: color.color});
