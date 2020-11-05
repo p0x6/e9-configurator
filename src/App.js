@@ -2,10 +2,6 @@ import './App.css';
 import { VctrApi } from "./vendor/viewer-api/api";
 import styled from "styled-components";
 import { useEffect, useState } from 'react';
-import ReactGA from 'react-ga';
-ReactGA.initialize('G-W2MYSDY3S3');
-
-ReactGA.pageview(window.location.pathname);
 
 const COLORS = [
   {name: "Schwartz", color: "#000000"},
@@ -74,11 +70,12 @@ const App = () => {
 
   const changePaintColor = async (color) => {
     if (!isReady || !mainBody || !underBody || !gasFlap) return;
-    ReactGA.event({
-      category: 'Selection',
-      action: 'Color Selection',
-      label: color.name,
-    });
+    if (process.env.REACT_ENV !== 'dev') {
+      window.gtag('event', 'Selection', {
+        'action': 'Color Selection',
+        'value': color.name
+      });
+    }
     vctrApi.updateMaterial(mainBody.material, {color: color.color});
     vctrApi.updateMaterial(underBody.material, {color: color.color});
     vctrApi.updateMaterial(gasFlap.material, {color: color.color});
