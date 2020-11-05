@@ -12,6 +12,7 @@ const COLORS = [
   {name: "Inka", color: "#d63a09"},
   {name: "Verona", color: "#c60c12"},
   {name: "Taiga", color: "#96e039"},
+  {name: "Amazonasgrün", color: "#1b5b5a"},
   {name: "Golf Yellow", color: "#cbde0b"},
   {name: "Fjord Blue", color: "#8fbff1"},
   {name: "Baikal Blue", color: "#2f669e"},
