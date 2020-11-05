@@ -55,8 +55,6 @@ function lightOrDark(color) {
 
   const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 
-  console.log(luma);
-
   if (luma < 50) {
     return '#fff';
   }
@@ -71,7 +69,6 @@ const App = () => {
   const [bodyColor, setBodyColor] = useState('#000000');
 
   const changePaintColor = async (color) => {
-    console.log('is Ready? ', isReady);
     if (!isReady || !mainBody || !underBody || !gasFlap) return;
     vctrApi.updateMaterial(mainBody.material, {color: color.color});
     vctrApi.updateMaterial(underBody.material, {color: color.color});
